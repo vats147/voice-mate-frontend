@@ -1,0 +1,21 @@
+[
+    {
+      "icon": "message",
+      "title": "Message us",
+      "description": "Message us using our online chat system for quick and efficient support.",
+      "details": "aisupport@voicemate.com"
+    },
+    {
+      "icon": "phone",
+      "title": "Call us",
+      "description": "Let's have a chat – there's nothing quite like talking to another person.",
+      "details": "+91 (635) 220-4100"
+    },
+    {
+      "icon": "location",
+      "title": "Address",
+      "description": "We’d be delighted to welcome you to our Head Office.",
+      "details": "Remote Support"
+    }
+  ]
+  

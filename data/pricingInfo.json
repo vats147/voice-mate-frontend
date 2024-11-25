@@ -1,0 +1,42 @@
+[
+    {
+      "title": "Part-time (Basic)",
+      "description": [
+        "Perfect for individuals",
+        "24/7 Call Scheduling",
+        "Appointment Booking",
+        "100 Call Credit per month",
+        "50 Call Transcripts per month"
+      ],
+      "price": 899,
+      "buttonLabel": "Get Started",
+      "highlight": false
+    },
+    {
+      "title": "Full-time (Pro)",
+      "description": [
+        "Ideal for small teams",
+        "Everything in Basic",
+        "250 Call Credit per month",
+        "200 Call Recording & Transcripts",
+        "Priority Support"
+      ],
+      "price": 2499,
+      "buttonLabel": "Get Started",
+      "highlight": false
+    },
+    {
+      "title": "Enterprise Plan",
+      "description": [
+        "Built for large-scale operations",
+        "Everything in Pro",
+        "Unlimited Call Scheduling",
+        "Unlimited Call Recording & Transcripts",
+        "Priority Support"
+      ],
+      "price": 9999,
+      "buttonLabel": "Get Started",
+      "highlight": true
+    }
+  ]
+  
