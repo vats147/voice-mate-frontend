@@ -1,5 +1,5 @@
 {
-    "icon": "/rocket-icon.png",
+    "icon": "/imgs/robot-svgrepo-com.png",
     "heading": "Feel free to send our friendly team a message",
     "description": "Message us using our online chat system for quick and efficient support.",
     "services": [
@@ -8,4 +8,5 @@
       "Price Negotiation"
     ]
   }
+  
   
