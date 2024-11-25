@@ -5,10 +5,10 @@
     },
     "links": [
       { "title": "Home", "href": "/" },
-      { "title": "About", "href": "/about" },
+      { "title": "About", "href": "/aboutus" },
       { "title": "Pricing", "href": "/pricing" },
-      { "title": "Contact Us", "href": "/contact" },
-      { "title": "Login ", "href": "/contact" }
+      { "title": "Contact Us", "href": "/contactus" },
+      { "title": "Login ", "href": "/login" }
     ]
   }
   
