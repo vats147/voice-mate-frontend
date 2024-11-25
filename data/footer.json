@@ -1,0 +1,20 @@
+{
+    "description": "We're always here to assist you! Whether you have a question, feedback, or need support, don't hesitate to reach out. Our team is eager to help.",
+    "links": {
+      "company": [
+        { "title": "Home", "href": "/" },
+        { "title": "About", "href": "/about" },
+        { "title": "Contact", "href": "/contact" }
+      ],
+      "legal": [
+        { "title": "Privacy Policy", "href": "/privacy" },
+        { "title": "Terms of Service", "href": "/terms" }
+      ]
+    },
+    "socialLinks": [
+      { "title": "Twitter", "href": "#", "icon": "twitter" },
+      { "title": "LinkedIn", "href": "#", "icon": "linkedin" }
+    ],
+    "copyright": "© VoiceMate AI. All rights reserved."
+  }
+  

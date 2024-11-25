@@ -1,0 +1,14 @@
+{
+    "logo": {
+      "text": "VoiceMate AI",
+      "abbreviation": "VM"
+    },
+    "links": [
+      { "title": "Home", "href": "/" },
+      { "title": "About", "href": "/about" },
+      { "title": "Pricing", "href": "/pricing" },
+      { "title": "Contact Us", "href": "/contact" },
+      { "title": "Login ", "href": "/contact" }
+    ]
+  }
+  
