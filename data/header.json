@@ -7,8 +7,8 @@
       { "title": "Home", "href": "/" },
       { "title": "About", "href": "/aboutus" },
       { "title": "Pricing", "href": "/pricing" },
-      { "title": "Contact Us", "href": "/contactus" },
-      { "title": "Login ", "href": "/login" }
+      { "title": "Contact Us", "href": "/contactus" }
+      
     ]
   }
   

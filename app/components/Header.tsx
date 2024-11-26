@@ -32,9 +32,9 @@ const Header = () => {
         </nav>
 
         {/* Contact Us Button */}
-        <Link href="/contact">
+        <Link href="/login">
           <button className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800">
-            Contact Us
+            Login
           </button>
         </Link>
 
