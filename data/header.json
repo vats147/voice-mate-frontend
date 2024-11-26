@@ -4,7 +4,7 @@
       "abbreviation": "VM"
     },
     "links": [
-      { "title": "Home", "href": "/" },
+      { "title": "Home", "href": "/home" },
       { "title": "About", "href": "/aboutus" },
       { "title": "Pricing", "href": "/pricing" },
       { "title": "Contact Us", "href": "/contactus" }
