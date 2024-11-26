@@ -85,12 +85,20 @@ const CallHistory = () => {
                 key={call.apiDetails.c_id}
                 className="hover:bg-gray-50 transition-colors duration-200"
               >
+               <TableCell className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  {new Intl.DateTimeFormat('en-US', {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+  }).format(new Date(call.apiDetails.started_at))}
+</TableCell>
+
                 <TableCell className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                   {call.apiDetails.from}
                 </TableCell>
                 <TableCell className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                   {call.apiDetails.to}
                 </TableCell>
+             
                 <TableCell className="px-6 py-4 whitespace-nowrap">
                   <span
                     className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
@@ -102,8 +110,11 @@ const CallHistory = () => {
                     {call.apiDetails.status}
                   </span>
                 </TableCell>
-                <TableCell className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                {/* <TableCell className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {call.apiDetails.call_length?.toFixed(2) || '0.00'}
+                </TableCell> */}
+                <TableCell className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  {call.apiDetails.price?.toFixed(2) || '0.00'}
                 </TableCell>
                 <TableCell className="px-6 py-4 whitespace-nowrap space-x-2 flex items-center">
                   {/* Transcript Dialog */}
