@@ -22,7 +22,7 @@ const Profile = () => {
         return;
       }
 
-      const response = await axios.get('http://172.20.192.20:3000/api/signup', {
+      const response = await axios.get('http://localhost:3000/api/signup', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -69,7 +69,7 @@ const Profile = () => {
 
       // Call backend to generate Razorpay order
       const response = await axios.post(
-        'http://172.20.192.20:3000/api/create-order',
+        'http://localhost:3000/api/create-order',
         { amount: amount * 100 }, // Convert to paise for Razorpay
         {
           headers: {
@@ -93,7 +93,7 @@ const Profile = () => {
           try {
             // Verify payment on the backend
             const verifyResponse = await axios.post(
-              'http://172.20.192.20:3000/api/verifyPayment',
+              'http://localhost:3000/api/verifyPayment',
               {
                 razorpay_order_id: response.razorpay_order_id,
                 razorpay_payment_id: response.razorpay_payment_id,

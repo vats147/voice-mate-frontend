@@ -18,14 +18,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const login = async (email: string, password: string) => {
     try {
-      const response = await axios.post('http://172.20.192.20:3000/auth/login', { email, password });
+      const response = await axios.post('http://localhost:3000/auth/login', { email, password });
 
       // Store the token
       const token = response.data.token;
       localStorage.setItem('token', token);
 
       // Fetch user details
-      const userResponse = await axios.get('http://172.20.192.20:3000/auth/verify-token', {
+      const userResponse = await axios.get('http://localhost:3000/auth/verify-token', {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setUser(userResponse.data.user);
 
       // Redirect to dashboard
-      router.push('/dashboard');
+      router.push('/api');
     } catch (error) {
       console.error('Login failed:', error);
       throw error;
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const token = localStorage.getItem('token');
     if (token) {
       try {
-        const response = await axios.get('http://172.20.192.20:3000/auth/verify-token', {
+        const response = await axios.get('http://localhost:3000/auth/verify-token', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUser(response.data.user);

@@ -1,5 +1,5 @@
 "use client";
-
+import axios from "axios";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,12 +18,19 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 
+import { Toaster,toast } from 'react-hot-toast';
+
 const SetupCall = () => {
+    // Get the current date and time
+    const currentDate = new Date();
+    const defaultDate = currentDate.toISOString().split("T")[0]; // Format as YYYY-MM-DD
+    const defaultTime = currentDate.toTimeString().split(" ")[0]; // Format as HH:MM:SS
+
   const [activeTab, setActiveTab] = useState<"hotels" | "services">("hotels");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
+  const [date, setDate] = useState(defaultDate);
+  const [time, setTime] = useState(defaultTime);
   const [language, setLanguage] = useState("en"); // Default: English
-  const [voice, setVoice] = useState<"male" | "female">("female");
+  const [voice, setVoice] = useState<"male" | "female">("male");
   const [negotiatePrice, setNegotiatePrice] = useState(true);
   const [recordCall, setRecordCall] = useState(true);
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -31,11 +38,99 @@ const SetupCall = () => {
   const [service, setService] = useState("");
   const [details, setDetails] = useState("");
 
+// Function to clear the form
+const clearForm = () => {
+  setPhoneNumber("");
+  setDate("");
+  setTime("");
+  setActiveTab("hotels"); // Reset activeTab if needed
+  setHotelInstructions("");
+  setNegotiatePrice(false);
+  setDetails("");
+  setVoice("male");
+  setLanguage("");
+  setRecordCall(false);
+};
+
+
+  const handleInitiateCall = async () => {
+    // Validation
+    if (!phoneNumber || !/^\+?[1-9]\d{1,14}$/.test(phoneNumber)) {
+      toast.error("Please enter a valid phone number.");
+      return;
+    }
+    if (!date || !time) {
+      toast.error("Date and Time are required.");
+      return;
+    }
+     // Format date and time
+  const formattedDateTime = `${date} ${time} +05:30`;
+
+    // Prepare data
+    // const task =
+    //   activeTab === "hotels"
+    //     ? `Hotel instructions: ${hotelInstructions || "None"} and make sure you have to ${negotiatePrice ? "negotiateprice" :"not negotiateprice"}`
+    //     : `Service details: ${details || "None"}`;
+
+        const token = localStorage.getItem('token');
+        if (!token) {
+          toast.error("Token not found");
+        }
+  
+        const response = await axios.get('http://localhost:3000/api/signup', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        let data = response.data;
+        data=data[0]
+
+        console.log(data)
+         // Prepare data
+    const task =
+    activeTab === "hotels"
+      ? `Hotel instructions: ${hotelInstructions || "None"} and make sure you have to ${negotiatePrice ? "negotiateprice" :"not negotiateprice"} ${ data.name ? "and you have to talk like a "+data.name :"" } `
+      : `Service details: ${details || "None"}`;
+
+    
+
+    const payload = {
+      number: phoneNumber,
+      task,
+      gender: voice,
+      language,
+      start_Time: formattedDateTime,
+      record_call: recordCall,
+    };
+
+    try {
+      const response = await fetch("http://localhost:3000/api/makecall", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        toast.success("Call initiated successfully!");
+        clearForm();
+      } else {
+        toast.error("Failed to initiate the call. Please try again.");
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please check your connection.");
+    }
+  };
+
   return (
     <div className="p-6 bg-white rounded-lg shadow-md space-y-6">
+      <Toaster position="top-right" reverseOrder={false} />
+
       {/* Custom Tabs for Hotels and Services */}
       <div className="flex justify-center mb-6">
-        <Button
+        {/* <Button
           variant={activeTab === "hotels" ? "default" : "outline"}
           onClick={() => setActiveTab("hotels")}
           className={`px-6 py-3 mr-2 ${
@@ -43,8 +138,8 @@ const SetupCall = () => {
           }`}
         >
           Hotels
-        </Button>
-        <Button
+        </Button> */}
+        {/* <Button
           variant={activeTab === "services" ? "default" : "outline"}
           onClick={() => setActiveTab("services")}
           className={`px-6 py-3 ${
@@ -54,7 +149,7 @@ const SetupCall = () => {
           }`}
         >
           Services
-        </Button>
+        </Button> */}
       </div>
 
       {/* Hotels Tab Content */}
@@ -102,10 +197,10 @@ const SetupCall = () => {
            {/* Custom Instructions */}
            <div>
             <Label className="block mb-2 font-bold">
-              Special Instructions for Hotels:
+              Special Instructions for call:
             </Label>
             <textarea
-              placeholder="Add any special requests or instructions"
+              placeholder="Add any special requests or instructions&#10;Ex. Book a hotel for 2 people, Book a Spa Appoitement"
               value={hotelInstructions}
               onChange={(e) => setHotelInstructions(e.target.value)}
               className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
@@ -284,7 +379,10 @@ const SetupCall = () => {
       </Accordion>
 
       {/* Submit Button */}
-      <Button className="w-full bg-green-500 hover:bg-green-600 text-white">
+      <Button className="w-full bg-green-500 hover:bg-green-600 text-white"
+      
+      onClick={handleInitiateCall}
+      >
         Initiate Call
       </Button>
     </div>

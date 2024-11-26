@@ -1,9 +1,27 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import headerData from '../../data/header.json';
+import  { useState, useEffect } from 'react';
+
 
 const Header = () => {
   const { logo, links } = headerData;
+    // State to track login status
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    // Simulate user login check (replace with actual logic, e.g., checking a token)
+    useEffect(() => {
+      const token = localStorage.getItem('token'); // Example: token-based authentication
+      setIsLoggedIn(!!token); // Update login status based on token presence
+    }, []);
+  
+    // Handle logout
+    const handleLogout = () => {
+      localStorage.removeItem('token'); // Remove the token
+      setIsLoggedIn(false); // Update login status
+    };
 
   return (
     <header className="bg-gray-50 shadow-sm">
@@ -31,12 +49,21 @@ const Header = () => {
           ))}
         </nav>
 
-        {/* Contact Us Button */}
-        <Link href="/contact">
-          <button className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800">
-            Contact Us
+        {/* Login/Logout Button */}
+        {isLoggedIn ? (
+          <button
+            onClick={handleLogout}
+            className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800"
+          >
+            Logout
           </button>
-        </Link>
+        ) : (
+          <Link href="/login">
+            <button className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800">
+              Login
+            </button>
+          </Link>
+        )}
 
         {/* Mobile Menu Button */}
         <button

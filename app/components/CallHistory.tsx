@@ -21,7 +21,7 @@ const CallHistory = () => {
         return;
       }
 
-      const response = await axios.get('http://172.20.192.20:3000/api/history', {
+      const response = await axios.get('http://localhost:3000/api/history', {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -1,14 +1,15 @@
 {
     "logo": {
       "text": "VoiceMate AI",
-      "abbreviation": "VM"
+      "abbreviation": "V"
     },
     "links": [
-      { "title": "Home", "href": "/" },
+      { "title": "Home", "href": "/home" },
       { "title": "About", "href": "/aboutus" },
       { "title": "Pricing", "href": "/pricing" },
-      { "title": "Contact Us", "href": "/contactus" },
-      { "title": "Login ", "href": "/login" }
+      { "title": "Make a Call", "href": "/api" },
+      { "title": "Contact Us", "href": "/contactus" }
+    
     ]
   }
   
