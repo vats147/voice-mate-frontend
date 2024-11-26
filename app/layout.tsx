@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import { AuthProvider } from '@/lib/auth-context'
 import "./globals.css";
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,7 +34,9 @@ export default function RootLayout({
       >
            <Header />
            <AuthProvider>
+            <TooltipProvider>
         {children}
+        </TooltipProvider>
         </AuthProvider>
         <Footer />
       </body>
