@@ -49,6 +49,7 @@ const Header = () => {
           ))}
         </nav>
 
+<<<<<<< HEAD
         {/* Login/Logout Button */}
         {isLoggedIn ? (
           <button
@@ -56,6 +57,12 @@ const Header = () => {
             className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800"
           >
             Logout
+=======
+        {/* Contact Us Button */}
+        <Link href="/login">
+          <button className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800">
+            Login
+>>>>>>> 2733f99874be7ebaa4119d175a6d66ede26c1a33
           </button>
         ) : (
           <Link href="/login">

@@ -7,9 +7,14 @@
       { "title": "Home", "href": "/home" },
       { "title": "About", "href": "/aboutus" },
       { "title": "Pricing", "href": "/pricing" },
+<<<<<<< HEAD
       { "title": "Make a Call", "href": "/api" },
       { "title": "Contact Us", "href": "/contactus" }
     
+=======
+      { "title": "Contact Us", "href": "/contactus" }
+      
+>>>>>>> 2733f99874be7ebaa4119d175a6d66ede26c1a33
     ]
   }
   
